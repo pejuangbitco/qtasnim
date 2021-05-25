@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require("express");
 const path = require("path");
 const cookieParser = require('cookie-parser');
+const db = require('./models');
 const apiRoutes = require('./routes/api');
 
 const app = express();
@@ -16,6 +17,10 @@ app.use('/api', apiRoutes(express.Router()));
 const env = process.env.NODE_ENV;
 const port = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`APP RUN ON PORT ${port} WIH ENV ${env}`);
-});
+db.sequelize.authenticate()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`APP RUN ON PORT: ${port} WIH ENV: ${env}`);
+    });
+  })
+  .catch((err) => console.error(err));
