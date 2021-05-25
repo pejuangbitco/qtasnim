@@ -1,5 +1,6 @@
 const test = require('../controllers/test');
 const product = require('../controllers/Product');
+const transaction = require('../controllers/Transaction');
 
 module.exports = (router) => {
   router.get('/ping', test.ping);
@@ -9,5 +10,11 @@ module.exports = (router) => {
   router.post('/product', product.create);
   router.put('/product/:id', product.update);
   router.delete('/product/:id', product.delete);
+
+  router.get('/transaction', transaction.list);
+  router.get('/transaction/:id', transaction.get);
+  router.post('/transaction', transaction.create);
+  router.put('/transaction/:id', transaction.update);
+  router.delete('/transaction/:id', transaction.delete);
   return router;
 }
