@@ -1,5 +1,5 @@
 module.exports = {
-  ping: (req, res) => {
+  ping: async (req, res) => {    
     return res.send('PING!!!');
   }
 }
