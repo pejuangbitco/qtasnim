@@ -6,7 +6,8 @@ const inventory = require('../controllers/Inventory');
 module.exports = (router) => {
   router.get('/ping', test.ping);
   router.get('/inventory', inventory.list);
-  
+  router.get('/inventory/filter', inventory.listFilter);
+
   router.get('/product', product.list);
   router.get('/product/:id', product.get);
   router.post('/product', product.create);
