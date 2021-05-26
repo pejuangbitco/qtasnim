@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Transaction.init({
     quantity: DataTypes.INTEGER,
+    productId: DataTypes.INTEGER,
     tanggal: {
       type: DataTypes.DATE,
       get: function() {
