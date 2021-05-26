@@ -3,11 +3,17 @@ const db = require('../models');
 module.exports = {
   list: async (req, res) => {
     try {
-      const result = await db.Transaction.findAll({
-        include: [{
-          model: db.Product,
-        }]
-      });
+      let condition = {}
+      condition.include = [{
+        model: db.Product,        
+      }];
+
+      if (req.query.name)
+        condition.include[0].where = {
+          name: req.query.name
+        }
+
+      const result = await db.Transaction.findAll(condition);
       return res.send(result);
     } catch (error) {
       console.error(error);
