@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const moment = require('moment');
 module.exports = (sequelize, DataTypes) => {
   class Transaction extends Model {
     /**
@@ -19,7 +20,12 @@ module.exports = (sequelize, DataTypes) => {
   };
   Transaction.init({
     quantity: DataTypes.INTEGER,
-    tanggal: DataTypes.DATE
+    tanggal: {
+      type: DataTypes.DATE,
+      get: function() {
+        return moment(this.getDataValue("tanggal")).format("MM/DD/YYYY");
+      }
+    }
   }, {
     sequelize,
     modelName: 'Transaction',
