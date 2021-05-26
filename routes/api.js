@@ -1,9 +1,11 @@
 const test = require('../controllers/test');
 const product = require('../controllers/Product');
 const transaction = require('../controllers/Transaction');
+const inventory = require('../controllers/Inventory');
 
 module.exports = (router) => {
   router.get('/ping', test.ping);
+  router.get('/inventory', inventory.list);
   
   router.get('/product', product.list);
   router.get('/product/:id', product.get);
