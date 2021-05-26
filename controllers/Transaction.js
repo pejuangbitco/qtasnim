@@ -32,10 +32,12 @@ module.exports = {
     try {
       const quantity = req.body.quantity;
       const productId = req.body.productId;
-      
+      const tanggal = req.body.tanggal;
+
       const result = await db.Transaction.create({
         quantity: quantity,
         productId: productId,
+        tanggal: tanggal,
         createdAt: new Date(),
         updatedAt: new Date(),
       });
@@ -50,13 +52,15 @@ module.exports = {
       const id = req.params.id;
       const quantity = req.body.quantity;
       const productId = req.body.productId;
-
+      const tanggal = req.body.tanggal;
+      
       const data = await db.Transaction.findByPk(id);
       if (data === null) {
         return res.res.sendStatus(404).send('Resource not found');
       }
       data.quantity = quantity;
       data.productId = productId;
+      data.tanggal = tanggal;
       data.updatedAt = new Date();
       data.save();
 
