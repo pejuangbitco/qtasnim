@@ -14,6 +14,7 @@ module.exports = {
     await queryInterface.bulkInsert('Transactions', [{
       productId: 1,
       quantity: 12,
+      tanggal: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

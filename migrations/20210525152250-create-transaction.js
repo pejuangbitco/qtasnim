@@ -20,6 +20,10 @@ module.exports = {
           as: 'productId',
         }
       },
+      tanggal: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
